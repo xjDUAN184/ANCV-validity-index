@@ -23,7 +23,8 @@ k_value = 2;
 score = zeros(K_max,2);
 while k_value <= K_max
      %% 产生候选结果,这里添加您的聚类算法
-    output = kmeans(data,k_value);
+     output = CTCEHC(data, k_value); 
+%      output = NTHC_clustering(data,k_value);
     %% 对ANCV指标测试
     [Separation,Compactness,Sep_clu,~] = validity_index(data,output,K,SNN_thr);
     score(k_value,1) = Separation;
