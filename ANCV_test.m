@@ -42,6 +42,6 @@ if res1 == optimal
     str = ["结果正确，类别数为:",num2str(res1)];
     disp(str);
 else
-    str = ["结果错误，正确类别数为:",num2str(OPTIMAL(u)),"识别出的类别为:",num2str(res1)];
+    str = ["结果错误，正确类别数为:",num2str(optimal),"识别出的类别为:",num2str(res1)];
     disp(str);
 end
