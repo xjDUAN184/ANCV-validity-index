@@ -34,12 +34,13 @@ function com = Compactness_r9(data_new,output,Dataset_MST,SNNthr,knn,Eu_dist)
                 sn = length(intersect(i_point,j_point));
                 
                 if sn < SNNthr
+%                     plot(data_new(idx(ii), 1), data_new(idx(ii), 2), '.','color','r','MarkerSize',15);
+%                     plot(data_new(near, 1), data_new(near, 2), '.','color','r','MarkerSize',15);
+%                     line([data_new(idx(ii),1),data_new(near,1)],[data_new(idx(ii),2),data_new(near,2)],'color','r','LineWidth',1);
                     pairwise = pairwise + 1;
                     tiaojian(pairwise,1) = idx(ii);tiaojian(pairwise,2) = near;
-%                     line([data_new(idx(ii),1),data_new(near,1)],[data_new(idx(ii),2),data_new(near,2)],'color','b','LineWidth',1);
                     [sdist,num,Pair_point] = isharedist(data_new,idx(ii),near,i_knn,j_knn,output,Eu_dist,1);
                     point_wise_in = [point_wise_in;Pair_point]; %去重前的点对
-%                     distance = [distance;sdist];
                 end
             end
         end

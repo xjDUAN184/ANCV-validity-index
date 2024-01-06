@@ -1,4 +1,4 @@
-function [Sep,Com,sep_clu,result] = validity_index(data,label,K,SNN_thr,Eu_dist)
+function [Sep,Com,sep_clu,result] = validity_index(data, label, K, SNN_thr, Eu_dist)
 % function result = validity_index(data,label,K,SNN_thr)
     k_value = max(unique(label));
     [n,m] = size(data); 
@@ -11,7 +11,7 @@ function [Sep,Com,sep_clu,result] = validity_index(data,label,K,SNN_thr,Eu_dist)
     Com = mean(com);
 %     Com = sum(com); 
     %% Compute the Separation
-    sep_clu = Separation_r1(data,label,Dataset_MST,knn,Eu_dist);
+    sep_clu = Separation_r1(data,label,Dataset_MST,knn,Eu_dist, SNN_thr);
     
     for i = 1:k_value
         sep_c = sep_clu(i,find(sep_clu(i,:)~=0));

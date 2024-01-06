@@ -1,7 +1,7 @@
 clc;clear;
 data = cell2mat(struct2cell(load('.\dataset\Frame.mat '))); 
 label = cell2mat(struct2cell(load('.\dataset\FrameGroup.mat')));
-K = 10;   SNN_thr = 3;optimal = length(unique(label));
+K = 10;   SNN_thr = 3;   optimal = length(unique(label));
 %% 数据标准化
 data_max = max(data); 
 data_min = min(data);

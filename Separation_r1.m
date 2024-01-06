@@ -1,4 +1,4 @@
-function sep = Separation_r1(data_new,output,Dataset_MST,knn,Eu_dist)
+function sep = Separation_r1(data_new,output,Dataset_MST,knn,Eu_dist,SNN_thr)
     k_value = length(unique(output));
     sep = zeros(k_value,k_value);
     % 首先判断两个簇的MST之间是否有边相连
@@ -18,7 +18,14 @@ function sep = Separation_r1(data_new,output,Dataset_MST,knn,Eu_dist)
                     for J = 1:length(v2)
                         p = idx(L);
                         q = v1(v2(J));
-%                         line([data_new(p,1),data_new(q,1)],[data_new(p,2),data_new(q,2)],'color','b','LineWidth',1);
+                        
+                        sn = length(intersect(knn(p,:),knn(q,:)));
+%                         if sn < SNN_thr
+%                             plot(data_new(p, 1), data_new(p, 2), '.','color','r','MarkerSize',15);
+%                             plot(data_new(q, 1), data_new(q, 2), '.','color','r','MarkerSize',15);
+%                             line([data_new(p,1),data_new(q,1)],[data_new(p,2),data_new(q,2)],'color','r','LineWidth',1);
+%                         end
+                        
                         [pq_dist,~,Pair_point] = isharedist(data_new,p,q,knn(p,:),knn(q,:),output,Eu_dist,2);
                         point_wise_out = [point_wise_out;Pair_point]; %去重前的点对
                         juli = [juli;pq_dist];num = num + 1;
